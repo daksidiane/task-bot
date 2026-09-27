@@ -1,0 +1,5 @@
+# Тяжёлые AI-компоненты — ставятся отдельно (torch + ffmpeg)
+# Установка: pip install -r requirements-ai.txt
+openai-whisper>=20231117
+# Бинарь ffmpeg без системной установки (нужен Whisper для декодирования аудио)
+imageio-ffmpeg>=0.4.9
