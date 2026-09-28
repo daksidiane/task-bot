@@ -22,7 +22,7 @@ pip install -r requirements.txt
 pip install -r requirements-ai.txt
 ```
 
-Секреты кладите в `secrets/` — папка в git не попадает:
+Токен бота и ваши Telegram ID хранятся в папке `secrets` на этом компьютере. Создайте её и скопируйте туда шаблон настроек:
 
 ```cmd
 mkdir secrets
