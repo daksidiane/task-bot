@@ -73,3 +73,5 @@ ollama pull llama3.1:8b
 - Telegram: [https://t.me/Dariodora](https://t.me/Dariodora)
 - Почта: [daksidiane@gmail.com](mailto:daksidiane@gmail.com)
 - LinkedIn: [https://www.linkedin.com/in/daria-danilko-8b7a081b5](https://www.linkedin.com/in/daria-danilko-8b7a081b5)
+
+![Карточка задачи: кому, что, к какому часу](https://raw.githubusercontent.com/daksidiane/daksidiane/main/assets/task-bot.gif)
