@@ -22,13 +22,6 @@ pip install -r requirements.txt
 pip install -r requirements-ai.txt
 ```
 
-Секреты кладите в `secrets/` — папка в git не попадает:
-
-```cmd
-mkdir secrets
-copy .env.example secrets\.env
-```
-
 В `secrets/.env` заполните:
 
 | Поле | Что вписать |
