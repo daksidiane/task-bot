@@ -1,4 +1,4 @@
-"""Транскрипция голосовых локальным Whisper (модель base/small по ТЗ)."""
+"""Транскрипция голосовых сообщений."""
 from __future__ import annotations
 
 import logging
@@ -15,7 +15,7 @@ _model_name = None
 
 
 def _ensure_ffmpeg() -> None:
-    """Whisper декодирует аудио через ffmpeg. Берём системный или из imageio-ffmpeg."""
+    """Аудио декодируется через ffmpeg. Берём системный или из imageio-ffmpeg."""
     if shutil.which("ffmpeg"):
         return
     try:
@@ -26,7 +26,7 @@ def _ensure_ffmpeg() -> None:
             "ffmpeg не найден. Посади: pip install imageio-ffmpeg "
             "(или установи ffmpeg отдельно и добавь в PATH)."
         ) from exc
-    # imageio-файл называется ffmpeg-win*-v*.exe, а Whisper ищет именно ffmpeg.exe —
+    # imageio-файл называется ffmpeg-win*-v*.exe, а распознавание ищет именно ffmpeg.exe —
     # кладём копию под нужным именем в изолированную проектную папку data/bin (не в общий /tmp).
     if os.path.basename(exe).lower() != "ffmpeg.exe":
         bin_dir = Path(__file__).resolve().parent / "data" / "bin"

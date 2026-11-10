@@ -53,20 +53,20 @@ def run_selfcheck(cfg) -> int:
         issues.append(f"хранилище: {exc}")
         print("      ERROR:", exc)
 
-    print(f"[3/5] LLM: {cfg.ollama_url} / {cfg.ollama_model}")
+    print(f"[3/5] Разбор текста: {cfg.ollama_url} / {cfg.ollama_model}")
     try:
         ext = Extractor(cfg)
         ok = ext.ollama_available()
-        print("      OK: Ollama доступна" if ok else "      ? Ollama недоступна — будет эвристика (без LLM-разбора)")
+        print("      OK: локальный разбор доступен" if ok else "      ? локальный разбор недоступен — останется разбор по правилам")
     except Exception as exc:
         print("      ERROR:", exc)
         issues.append(str(exc))
 
-    print(f"[4/5] Whisper: USE_WHISPER={cfg.whisper_enabled}, модель={cfg.whisper_model}")
+    print(f"[4/5] Голос: включён={cfg.whisper_enabled}, модель={cfg.whisper_model}")
     if cfg.whisper_enabled:
         from stt import whisper_available
-        print("      OK: openai-whisper установлена" if whisper_available()
-              else "      ? openai-whisper не установлена — голос недоступен, поставь requirements-ai.txt")
+        print("      OK: распознавание голоса установлено" if whisper_available()
+              else "      ? пакет распознавания не установлен — голос недоступен, поставь requirements-ai.txt")
 
     print(f"[5/5] Логика дедлайнов: напоминание за {cfg.remind_hours_before} ч, эскалация после {cfg.escalate_after_minutes} мин просрочки")
 

@@ -135,7 +135,7 @@ def _confirm_text(parsed: dict) -> str:
     desc = (parsed.get("description") or "").strip()
     assignee = parsed.get("assignee") or "не определён"
     dl = parsed.get("deadline") or parsed.get("deadline_iso") or "не определён"
-    source = "🧠 LLM (Ollama)" if parsed.get("source") == "llm" else "⚙️ локальный разбор"
+    source = "авторазбор" if parsed.get("source") == "llm" else "локальный разбор"
 
     parts = [
         f"📝 Название: {title}",
@@ -354,7 +354,7 @@ async def cmd_help(update, context):
     text = (
         "📖 Как пользоваться\n\n"
         "1️⃣ Нажми «Создать задачу» и напиши задачу текстом или голосом.\n"
-        "2️⃣ Бот распознает её (Ollama/Whisper), переформулирует в SMART и спросит подтверждение.\n"
+        "2️⃣ Бот разберёт текст или голос, переформулирует задачу и спросит подтверждение.\n"
         "3️⃣ Выбери исполнителя и напиши дедлайн (например, «завтра 18:00»).\n"
         "4️⃣ Исполнитель получает уведомление, отчитывается кнопками.\n\n"
         "Контроль дедлайнов: напоминание за N часов, запрос в момент дедлайна,\n"
@@ -633,7 +633,7 @@ async def on_voice(update, context):
     voice_dir = cfg.storage_path.parent / "voice"
     voice_dir.mkdir(parents=True, exist_ok=True)
     audio_path = voice_dir / f"voice_{update.effective_user.id}_{int(datetime.now().timestamp())}.oga"
-    waiting = await update.effective_message.reply_text("🎙 Распознаю голос (Whisper)…")
+    waiting = await update.effective_message.reply_text("🎙 Распознаю голос…")
     try:
         file = await update.effective_message.voice.get_file()
         await file.download_to_drive(audio_path)
